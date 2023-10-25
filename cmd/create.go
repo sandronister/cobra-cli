@@ -25,7 +25,13 @@ to quickly create a Cobra application.`,
 		exists, _ := cmd.Flags().GetBool("exists")
 		fmt.Println(exists)
 		id, _ := cmd.Flags().GetInt16("id")
-		fmt.Printf("ID: %d", id)
+		fmt.Printf("ID: %d\n", id)
+	},
+	PreRun: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Chamado antes do Run")
+	},
+	PostRun: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Chamado depois do Run")
 	},
 }
 
