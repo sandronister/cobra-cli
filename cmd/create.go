@@ -24,13 +24,16 @@ to quickly create a Cobra application.`,
 		fmt.Println("Category called with name: " + name)
 		exists, _ := cmd.Flags().GetBool("exists")
 		fmt.Println(exists)
+		id, _ := cmd.Flags().GetInt16("id")
+		fmt.Printf("ID: %d", id)
 	},
 }
 
 func init() {
 	categoryCmd.AddCommand(createCmd)
-	createCmd.PersistentFlags().StringP("name", "n", "", "Name of the category")
+	createCmd.PersistentFlags().StringP("name", "n", "categoria", "Name of the category")
 	createCmd.PersistentFlags().BoolP("exists", "e", false, "Verify category exists")
+	createCmd.PersistentFlags().Int16P("id", "i", 0, "Id of category")
 
 	// Here you will define your flags and configuration settings.
 
